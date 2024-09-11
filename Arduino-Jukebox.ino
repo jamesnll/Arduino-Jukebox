@@ -61,13 +61,27 @@ void translate_ir()
   delay(500);
 }
 
+/**
+ * Setup the IR receiver, Serial Monitor to the Arduino board
+ */
 void setup()
 {
-
+  Serial.begin(9600);
+  Serial.println("IR Receiver Button Decode");
+  // Start the receiver
+  irrecv.enableIRIn();
 }
 
-
+/**
+ * Continuously checks for received IR signals, decodes them, and processes the input.
+ */
 void loop()
 {
-
+  // Check if an IR signal was received
+  if (irrecv.decode())
+  {
+    translate_ir();
+    // Receive the next signal
+    irrecv.resume();
+  }
 }
