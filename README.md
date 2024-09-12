@@ -1,6 +1,8 @@
 # Arduino-Jukebox
 This project uses the Arduino Uno Rev3 board and a number of different modules listed below to play nine songs that the user can choose from by controlling an IR remote.
 
+This project is currently a work in progress.
+
 ## Modules Used
 - IR Receiver
 - IR Remote
