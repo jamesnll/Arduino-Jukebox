@@ -33,11 +33,14 @@ void IR_Receiver::translate_ir()
 
     // Store the last decodedRawData
     last_decodedRawData = irrecv->decodedIRData.decodedRawData;
-    delay(DEBOUNCE_DELAY);
+    delay(DEBOUNCE_DELAY); // Add a delay to not get an immediate response
     irrecv->resume();  // Receive the next value
   }
 }
 
+/**
+ * Handles the raw IR data and maps it to the corresponding hex address
+ */
 static void handle_ir_codes(IRRawDataType decodedRawData)
 {
   switch (decodedRawData) 
