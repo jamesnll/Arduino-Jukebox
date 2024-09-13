@@ -41,4 +41,6 @@ private:
     static const unsigned long DEBOUNCE_DELAY = 500;
 };
 
+static void handle_ir_codes(IRRawDataType decodedRawData);
+static void power_button();
 #endif
