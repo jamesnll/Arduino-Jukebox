@@ -39,33 +39,77 @@ void IR_Receiver::translate_ir()
 }
 
 /**
- * Handles the raw IR data and maps it to the corresponding hex address
+ * Handles the raw IR data and maps it to the corresponding hex address.
+ *
+ * @param decodedRawData the decoded raw IR data
  */
 static void handle_ir_codes(IRRawDataType decodedRawData)
 {
   switch (decodedRawData) 
   {
-    case POWER: power_button(); break;
-    case FUNC_STOP: Serial.println("FUNC/STOP"); break;
-    case VOL_UP: control_volume(VOL_UP); break;
-    case FAST_BACK: Serial.println("FAST BACK"); break;
-    case PAUSE_RESUME: Serial.println("PAUSE"); break;
-    case FAST_FORWARD: Serial.println("FAST FORWARD"); break;
-    case DOWN: Serial.println("DOWN"); break;
-    case VOL_DOWN: control_volume(VOL_DOWN); break;
-    case UP: Serial.println("UP"); break;
-    case EQ: Serial.println("EQ"); break;
-    case ST_REPT: Serial.println("ST/REPT"); break;
-    case ZERO: Serial.println("0"); break;
-    case ONE: Serial.println("1"); break;
-    case TWO: Serial.println("2"); break;
-    case THREE: Serial.println("3"); break;
-    case FOUR: Serial.println("4"); break;
-    case FIVE: Serial.println("5"); break;
-    case SIX: Serial.println("6"); break;
-    case SEVEN: Serial.println("7"); break;
-    case EIGHT: Serial.println("8"); break;
-    case NINE: Serial.println("9"); break;
+    case POWER:
+      power_button();
+      break;
+    case FUNC_STOP: 
+      Serial.println("FUNC/STOP");
+      break;
+    case VOL_UP: 
+      control_volume(VOL_UP);
+      break;
+    case FAST_BACK:
+      Serial.println("FAST BACK");
+      break;
+    case PAUSE_RESUME: 
+      Serial.println("PAUSE"); 
+      break;
+    case FAST_FORWARD: 
+      Serial.println("FAST FORWARD"); 
+      break;
+    case DOWN: 
+      Serial.println("DOWN");
+      break;
+    case VOL_DOWN: 
+      control_volume(VOL_DOWN); 
+      break;
+    case UP: 
+      Serial.println("UP"); 
+      break;
+    case EQ: 
+      Serial.println("EQ"); 
+      break;
+    case ST_REPT: 
+      Serial.println("ST/REPT"); 
+      break;
+    case ZERO: 
+      song_button(ZERO);
+      break;
+    case ONE: 
+      song_button(ONE);
+      break;
+    case TWO: 
+      song_button(TWO);
+      break;
+    case THREE: 
+      song_button(THREE);
+      break;
+    case FOUR: 
+      song_button(FOUR);
+      break;
+    case FIVE: 
+      song_button(FIVE);
+      break;
+    case SIX: 
+      song_button(SIX);
+      break;
+    case SEVEN: 
+      song_button(SEVEN);
+      break;
+    case EIGHT: 
+      song_button(EIGHT);
+      break;
+    case NINE: 
+      song_button(NINE);
+      break;
     default:
       Serial.println("Other button");
       break;
@@ -109,6 +153,56 @@ static void control_volume(uint32_t button)
     else if (button == VOL_DOWN)
     {
       Serial.println("VOLUME DOWN");
+    }
+  }
+}
+
+/**
+ * Handles the functionality for the buttons 0 - 9 for songs.
+ * If power_button_status is true, play the song corresponding to button.
+ * If power_button_status is false, return.
+ *
+ * @param button Hex address representing which song to play.
+ */
+static void song_button(uint32_t button)
+{
+  if (power_button_status)
+  {
+    // TODO: add functions to each case to play each respective song
+    switch (button)
+    {
+      case ZERO:
+        Serial.println("Playing song 0");
+        break;
+      case ONE:
+        Serial.println("Playing song 1");
+        break;      
+      case TWO:
+        Serial.println("Playing song 2");
+        break;      
+      case THREE:
+        Serial.println("Playing song 3");
+        break;      
+      case FOUR:
+        Serial.println("Playing song 4");
+        break;      
+      case FIVE:
+        Serial.println("Playing song 5");
+        break;      
+      case SIX:
+        Serial.println("Playing song 6");
+        break;      
+      case SEVEN:
+        Serial.println("Playing song 7");
+        break;      
+      case EIGHT:
+        Serial.println("Playing song 8");
+        break;      
+      case NINE:
+        Serial.println("Playing song 9");
+        break;      
+      default:
+        break;
     }
   }
 }
