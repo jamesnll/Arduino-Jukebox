@@ -1,6 +1,7 @@
 #include "ir_receiver.h"
 
 bool power_button_status = false;
+bool pause_resume_status = false; // pause = false, resume = true
 
 IR_Receiver::IR_Receiver(int pin) : irrecv(new IRrecv(pin)), last_decodedRawData(0) {}
 
@@ -60,7 +61,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData)
       Serial.println("FAST BACK");
       break;
     case PAUSE_RESUME: 
-      Serial.println("PAUSE"); 
+      pause_resume_button(); 
       break;
     case FAST_FORWARD: 
       Serial.println("FAST FORWARD"); 
@@ -153,6 +154,29 @@ static void control_volume(uint32_t button)
     else if (button == VOL_DOWN)
     {
       Serial.println("VOLUME DOWN");
+    }
+  }
+}
+
+/**
+ * Handles the functionality of the pause/resume button.
+ * If power_button_status is true, it will toggle between pausing and resuming the song.
+ * If pause_resume_status is false (paused), it will resume the song and set pause_resume_status to true.
+ * If pause_resume_status is true (resumed), it will pause the song and set pause_resume_status to false.
+ */
+static void pause_resume_button()
+{
+  if (power_button_status)
+  {
+    if (!pause_resume_status)
+    {
+      Serial.println("Resuming song");
+      pause_resume_status = true;
+    }
+    else
+    {
+      Serial.println("Pausing song");
+      pause_resume_status = false;
     }
   }
 }
