@@ -47,12 +47,12 @@ static void handle_ir_codes(IRRawDataType decodedRawData)
   {
     case POWER: power_button(); break;
     case FUNC_STOP: Serial.println("FUNC/STOP"); break;
-    case VOL_UP: Serial.println("VOL+"); break;
+    case VOL_UP: control_volume(VOL_UP); break;
     case FAST_BACK: Serial.println("FAST BACK"); break;
     case PAUSE_RESUME: Serial.println("PAUSE"); break;
     case FAST_FORWARD: Serial.println("FAST FORWARD"); break;
     case DOWN: Serial.println("DOWN"); break;
-    case VOL_DOWN: Serial.println("VOL-"); break;
+    case VOL_DOWN: control_volume(VOL_DOWN); break;
     case UP: Serial.println("UP"); break;
     case EQ: Serial.println("EQ"); break;
     case ST_REPT: Serial.println("ST/REPT"); break;
@@ -88,5 +88,27 @@ static void power_button()
   {
     Serial.println("POWER OFF");
     power_button_status = false;
+  }
+}
+
+/**
+ * Handles the functionality of volume up/down.
+ * If power_button_status is true, turn the volume up/down depending on the button.
+ * If power_button_status is false, return.
+ *
+ * @param button Hex address for volume up/down.
+ */
+static void control_volume(uint32_t button)
+{
+  if (power_button_status)
+  {
+    if (button == VOL_UP)
+    {
+      Serial.println("VOLUME UP");
+    }
+    else if (button == VOL_DOWN)
+    {
+      Serial.println("VOLUME DOWN");
+    }
   }
 }

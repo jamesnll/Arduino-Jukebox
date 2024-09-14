@@ -43,4 +43,5 @@ private:
 
 static void handle_ir_codes(IRRawDataType decodedRawData);
 static void power_button();
+static void control_volume(uint32_t button);
 #endif
