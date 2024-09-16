@@ -31,11 +31,26 @@ static const int IR_RECEIVER_PIN = 11; // Signal pin of the IR receiver
 
 class IR_Receiver {
 public:
-    IR_Receiver(int pin = IR_RECEIVER_PIN);
+
+    // Singleton IR_Receiver
+    static IR_Receiver& get_instance() {
+      static IR_Receiver instance;
+      return instance;
+    }
     void begin();
     void translate_ir();
 
 private:
+    IR_Receiver(int pin = IR_RECEIVER_PIN) : irrecv(new IRrecv(pin)), last_decodedRawData(0) {}
+    IR_Receiver(const IR_Receiver&) = delete;
+    IR_Receiver& operator=(const IR_Receiver&) = delete;
+
+    // Destructor
+    ~IR_Receiver() {
+        delete irrecv;
+        irrecv = nullptr;  // Avoid dangling pointer
+    }
+
     IRrecv* irrecv;
     uint32_t last_decodedRawData;
     static const unsigned long DEBOUNCE_DELAY = 500;

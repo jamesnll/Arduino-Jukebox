@@ -4,8 +4,6 @@ bool power_button_status = false;
 bool pause_resume_status = false; // pause = false, resume = true
 uint32_t current_song;
 
-IR_Receiver::IR_Receiver(int pin) : irrecv(new IRrecv(pin)), last_decodedRawData(0) {}
-
 void IR_Receiver::begin() 
 {
   irrecv->enableIRIn();  // Start the receiver

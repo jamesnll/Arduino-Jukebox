@@ -1,6 +1,6 @@
 #include "ir_receiver.h"
 
-IR_Receiver ir_receiver;
+IR_Receiver& ir_receiver = IR_Receiver::get_instance();
 
 /**
  * Setup the IR receiver, Serial Monitor to the Arduino board
