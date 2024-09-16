@@ -2,6 +2,7 @@
 
 bool power_button_status = false;
 bool pause_resume_status = false; // pause = false, resume = true
+uint32_t current_song;
 
 IR_Receiver::IR_Receiver(int pin) : irrecv(new IRrecv(pin)), last_decodedRawData(0) {}
 
@@ -79,7 +80,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData)
       Serial.println("EQ"); 
       break;
     case ST_REPT: 
-      Serial.println("ST/REPT"); 
+      repeat_button(current_song);
       break;
     case ZERO: 
       song_button(ZERO);
@@ -160,7 +161,6 @@ static void control_volume(uint32_t button)
 
 /**
  * Handles the functionality of the pause/resume button.
- * If power_button_status is true, it will toggle between pausing and resuming the song.
  * If pause_resume_status is false (paused), it will resume the song and set pause_resume_status to true.
  * If pause_resume_status is true (resumed), it will pause the song and set pause_resume_status to false.
  */
@@ -178,6 +178,16 @@ static void pause_resume_button()
       Serial.println("Pausing song");
       pause_resume_status = false;
     }
+  }
+}
+
+
+static void repeat_button(uint32_t song)
+{
+  if (power_button_status)
+  {
+    Serial.println("Repeating song");
+    Serial.println(song);
   }
 }
 
@@ -229,4 +239,7 @@ static void song_button(uint32_t button)
         break;
     }
   }
+  
+  // Update the current song
+  current_song = button;
 }

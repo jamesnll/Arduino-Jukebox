@@ -45,5 +45,6 @@ static void handle_ir_codes(IRRawDataType decodedRawData);
 static void power_button();
 static void control_volume(uint32_t button);
 static void pause_resume_button();
+static void repeat_button(uint32_t song);
 static void song_button(uint32_t button);
 #endif
