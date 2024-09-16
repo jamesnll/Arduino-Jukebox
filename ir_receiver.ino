@@ -181,7 +181,13 @@ static void pause_resume_button()
   }
 }
 
-
+/**
+ * Handles the functionality of the repeat button.
+ * If power_button_status is true, repeat the current song being played.
+ * If power_button_status is false, return.
+ *
+ * @param current_song the hex address of the current song being played.
+ */
 static void repeat_button(uint32_t song)
 {
   if (power_button_status)
