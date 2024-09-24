@@ -211,6 +211,7 @@ static void song_button(uint32_t button)
     {
       case ZERO:
         Serial.println("Playing song 0");
+        play_song_zero();
         break;
       case ONE:
         Serial.println("Playing song 1");

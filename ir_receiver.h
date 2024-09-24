@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <IRremote.h>
+#include "songs.h"
 
 // IR remote button mappings
 #define POWER         0xBA45FF00 // Power to the jukebox
