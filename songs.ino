@@ -45,8 +45,14 @@ void play_song_zero()
     }
     for (int curr_note = 0; curr_note < NUM_NOTES; curr_note++)
     {
-      tone(8, melody[curr_note], eighth_beat_tempo);
+      tone(BUZZER_PIN, melody[curr_note], eighth_beat_tempo);
       delay(rests[curr_note]);
+      noTone(BUZZER_PIN);
     }
   }
+}
+
+void play_song_one()
+{
+  
 }

@@ -8,7 +8,7 @@
 #define EIGHTH_BEAT 500
 #define SIXTEENTH_BEAT 250
 
-#define NO_NOTE 0
+#define BUZZER_PIN 8
 
 void play_song_zero();
 
