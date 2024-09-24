@@ -1,6 +1,6 @@
 #include "songs.h"
 
-void play_song_one()
+void play_song_zero()
 {
   int eighth_beat_tempo = EIGHTH_BEAT / 2.273;
   int sixteenth_beat_tempo = SIXTEENTH_BEAT / 2.273;
@@ -24,6 +24,9 @@ void play_song_one()
     eighth_beat_tempo + sixteenth_beat_tempo,
     eighth_beat_tempo
   };
+
+  // Small delay before starting the song
+  delay(2000);
 
   // Play the song chorus
   for (int i = 0; i < 4; i++)

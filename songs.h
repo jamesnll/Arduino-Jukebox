@@ -10,6 +10,6 @@
 
 #define NO_NOTE 0
 
-void play_song_one();
+void play_song_zero();
 
 #endif
