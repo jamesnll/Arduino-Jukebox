@@ -6,6 +6,7 @@ This project is currently a work in progress.
 ## Modules Used
 - IR Receiver
 - IR Remote
-- Passive Buzzer
+- DFPlayer Mini MP3 Player
 - LCD1602
 - Potentiometer 10K
+- 8 ohm micro speaker
