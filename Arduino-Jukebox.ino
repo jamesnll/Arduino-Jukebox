@@ -33,6 +33,9 @@ void setup()
       ;
   }
 
+  // Initial settings
+  myDFPlayer.volume(5);  // Volume 5
+
   Serial.println();
   Serial.println(F("DFPlayer Mini module initialized!"));
 
