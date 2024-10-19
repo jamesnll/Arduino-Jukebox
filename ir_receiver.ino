@@ -182,11 +182,13 @@ static void pause_resume_button()
   {
     if (pause_status)
     {
+      myDFPlayer.start();
       Serial.println("Resuming song");
       pause_status = false;
     }
     else
     {
+      myDFPlayer.pause();
       Serial.println("Pausing song");
       pause_status = true;
     }
