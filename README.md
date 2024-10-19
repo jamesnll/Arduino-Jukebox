@@ -17,3 +17,4 @@ These songs are stored locally on a microSD card to be used with the DFPlayer Mi
 001 - Walking on a Dream - Empire of the Sun <br>
 002 - Funkytown - Lipps Inc. <br>
 003 - Boogie Wonderland - Earth, Wind & Fire and The Emotions <br>
+004 - Never Gonna Give You Up -- Rick Astley <br>
