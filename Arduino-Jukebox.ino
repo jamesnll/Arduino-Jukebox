@@ -33,6 +33,8 @@ void setup()
       ;
   }
 
+  delay(1000); // Short delay before initializing settings
+
   // Initial settings
   myDFPlayer.volume(5);  // Volume 5
 
@@ -52,5 +54,5 @@ void setup()
  */
 void loop()
 {
-  ir_receiver.translate_ir();  // Check for IR signals and handle them
+  ir_receiver.translate_ir(myDFPlayer);  // Check for IR signals and handle them
 }
