@@ -36,7 +36,7 @@ void setup()
   delay(1000); // Short delay before initializing settings
 
   // Initial settings
-  myDFPlayer.volume(5);  // Volume 5
+  myDFPlayer.volume(DEFAULT_VOLUME);  // Volume 5
 
   Serial.println();
   Serial.println(F("DFPlayer Mini module initialized!"));
