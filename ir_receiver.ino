@@ -9,7 +9,7 @@ void IR_Receiver::begin()
   irrecv->enableIRIn();  // Start the receiver
 }
 
-void IR_Receiver::translate_ir() 
+void IR_Receiver::translate_ir(DFRobotDFPlayerMini myDFPlayer) 
 {
 
   if (irrecv->decode()) 
@@ -29,7 +29,7 @@ void IR_Receiver::translate_ir()
     }
 
     // Mapping IR codes to button names
-    handle_ir_codes(irrecv->decodedIRData.decodedRawData);
+    handle_ir_codes(irrecv->decodedIRData.decodedRawData, myDFPlayer);
 
     // Store the last decodedRawData
     last_decodedRawData = irrecv->decodedIRData.decodedRawData;
@@ -43,7 +43,7 @@ void IR_Receiver::translate_ir()
  *
  * @param decodedRawData the decoded raw IR data
  */
-static void handle_ir_codes(IRRawDataType decodedRawData)
+static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini myDFPlayer)
 {
   switch (decodedRawData) 
   {
@@ -81,34 +81,34 @@ static void handle_ir_codes(IRRawDataType decodedRawData)
       repeat_button(current_song);
       break;
     case ZERO: 
-      song_button(ZERO);
+      song_button(ZERO, myDFPlayer);
       break;
     case ONE: 
-      song_button(ONE);
+      song_button(ONE, myDFPlayer);
       break;
     case TWO: 
-      song_button(TWO);
+      song_button(TWO, myDFPlayer);
       break;
     case THREE: 
-      song_button(THREE);
+      song_button(THREE, myDFPlayer);
       break;
     case FOUR: 
-      song_button(FOUR);
+      song_button(FOUR, myDFPlayer);
       break;
     case FIVE: 
-      song_button(FIVE);
+      song_button(FIVE, myDFPlayer);
       break;
     case SIX: 
-      song_button(SIX);
+      song_button(SIX, myDFPlayer);
       break;
     case SEVEN: 
-      song_button(SEVEN);
+      song_button(SEVEN, myDFPlayer);
       break;
     case EIGHT: 
-      song_button(EIGHT);
+      song_button(EIGHT, myDFPlayer);
       break;
     case NINE: 
-      song_button(NINE);
+      song_button(NINE, myDFPlayer);
       break;
     default:
       Serial.println("Other button");
@@ -202,7 +202,7 @@ static void repeat_button(uint32_t song)
  *
  * @param button Hex address representing which song to play.
  */
-static void song_button(uint32_t button)
+static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
 {
   if (power_button_status)
   {
@@ -211,6 +211,7 @@ static void song_button(uint32_t button)
     {
       case ZERO:
         Serial.println("Playing song 0");
+        myDFPlayer.play(1);
         break;
       case ONE:
         Serial.println("Playing song 1");
