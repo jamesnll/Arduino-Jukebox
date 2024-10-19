@@ -3,6 +3,7 @@
 bool power_button_status = false;
 bool pause_resume_status = false; // pause = false, resume = true
 uint32_t current_song;
+int volume = DEFAULT_VOLUME;
 
 void IR_Receiver::begin() 
 {
@@ -54,7 +55,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
       Serial.println("FUNC/STOP");
       break;
     case VOL_UP: 
-      control_volume(VOL_UP);
+      control_volume(VOL_UP, myDFPlayer);
       break;
     case FAST_BACK:
       Serial.println("FAST BACK");
@@ -69,7 +70,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
       Serial.println("DOWN");
       break;
     case VOL_DOWN: 
-      control_volume(VOL_DOWN); 
+      control_volume(VOL_DOWN, myDFPlayer); 
       break;
     case UP: 
       Serial.println("UP"); 
@@ -142,18 +143,31 @@ static void power_button()
  *
  * @param button Hex address for volume up/down.
  */
-static void control_volume(uint32_t button)
+static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
 {
   if (power_button_status)
   {
     if (button == VOL_UP)
     {
-      Serial.println("VOLUME UP");
+      myDFPlayer.volumeUp();
+      volume++;
+      if (volume > 30)
+      {
+        volume = 30;
+      }
     }
     else if (button == VOL_DOWN)
     {
-      Serial.println("VOLUME DOWN");
+      myDFPlayer.volumeDown();
+      volume--;
+      if (volume < 0)
+      {
+        volume = 0;
+      }
     }
+
+    Serial.print("Volume: ");
+    Serial.println(volume);
   }
 }
 

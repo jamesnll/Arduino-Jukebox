@@ -5,6 +5,8 @@
 #include <IRremote.h>
 #include "DFRobotDFPlayerMini.h"
 
+#define DEFAULT_VOLUME 5
+
 // IR remote button mappings
 #define POWER         0xBA45FF00 // Power to the jukebox
 #define FUNC_STOP     0xB847FF00 // Stop the jukebox (Func disabled)
@@ -59,7 +61,7 @@ private:
 
 static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini myDFPlayer);
 static void power_button();
-static void control_volume(uint32_t button);
+static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
 static void pause_resume_button();
 static void repeat_button(uint32_t song);
 static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
