@@ -1,7 +1,7 @@
 #include "ir_receiver.h"
 
 bool power_button_status = false;
-bool pause_resume_status = false; // pause = false, resume = true
+bool pause_status = false; // pause = false, resume = true
 uint32_t current_song;
 int volume = DEFAULT_VOLUME;
 
@@ -173,22 +173,22 @@ static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
 
 /**
  * Handles the functionality of the pause/resume button.
- * If pause_resume_status is false (paused), it will resume the song and set pause_resume_status to true.
- * If pause_resume_status is true (resumed), it will pause the song and set pause_resume_status to false.
+ * If pause_status is false (paused), it will resume the song and set pause_status to true.
+ * If pause_status is true (resumed), it will pause the song and set pause_status to false.
  */
 static void pause_resume_button()
 {
   if (power_button_status)
   {
-    if (!pause_resume_status)
+    if (pause_status)
     {
       Serial.println("Resuming song");
-      pause_resume_status = true;
+      pause_status = false;
     }
     else
     {
       Serial.println("Pausing song");
-      pause_resume_status = false;
+      pause_status = true;
     }
   }
 }
