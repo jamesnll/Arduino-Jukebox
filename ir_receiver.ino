@@ -74,8 +74,8 @@ static void handle_ir_codes(IRRawDataType decodedRawData)
     case UP: 
       Serial.println("UP"); 
       break;
-    case EQ: 
-      Serial.println("EQ"); 
+    case EQUALIZER: 
+      Serial.println("EQUALIZER"); 
       break;
     case ST_REPT: 
       repeat_button(current_song);

@@ -14,7 +14,7 @@
 #define DOWN          0xF807FF00 // Previous song
 #define VOL_DOWN      0xEA15FF00 // Volume down
 #define UP            0xF609FF00 // Next song
-#define EQ            0xE619FF00 // Equalizer (Disabled)
+#define EQUALIZER     0xE619FF00 // Equalizer (Disabled)
 #define ST_REPT       0xF20DFF00 // Repeat
 #define ZERO          0xE916FF00 // Song 0
 #define ONE           0xF30CFF00 // Song 1
