@@ -49,7 +49,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
   switch (decodedRawData) 
   {
     case POWER:
-      power_button();
+      power_button(myDFPlayer);
       break;
     case FUNC_STOP: 
       Serial.println("FUNC/STOP");
@@ -122,7 +122,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
  * If power_button_status is true, enable functionality for all other buttons on the remote.
  * If power_button_status is false, disable functionality for all other buttons.
  */
-static void power_button()
+static void power_button(DFRobotDFPlayerMini myDFPlayer)
 {
   if (!power_button_status)
   {
@@ -133,6 +133,7 @@ static void power_button()
   {
     Serial.println("POWER OFF");
     power_button_status = false;
+    myDFPlayer.stop();
   }
 }
 

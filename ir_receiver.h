@@ -60,7 +60,7 @@ private:
 };
 
 static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini myDFPlayer);
-static void power_button();
+static void power_button(DFRobotDFPlayerMini myDFPlayer);
 static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
 static void pause_resume_button();
 static void repeat_button(uint32_t song);
