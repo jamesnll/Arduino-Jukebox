@@ -228,23 +228,23 @@ static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
     {
       case ZERO:
         Serial.println("Playing song 0");
-        myDFPlayer.play(0);
+        myDFPlayer.play(1);
         break;
       case ONE:
         Serial.println("Playing song 1");
-        myDFPlayer.play(1);
+        myDFPlayer.play(2);
         break;      
       case TWO:
         Serial.println("Playing song 2");
-        myDFPlayer.play(2);
+        myDFPlayer.play(3);
         break;      
       case THREE:
         Serial.println("Playing song 3");
-        myDFPlayer.play(3);
+        myDFPlayer.play(4);
         break;      
       case FOUR:
         Serial.println("Playing song 4");
-        myDFPlayer.play(4);
+        myDFPlayer.play(5);
         break;      
       case FIVE:
         Serial.println("Playing song 5");
