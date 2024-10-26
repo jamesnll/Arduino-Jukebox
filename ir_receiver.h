@@ -9,7 +9,7 @@
 
 // IR remote button mappings
 #define POWER         0xBA45FF00 // Power to the jukebox
-#define FUNC_STOP     0xB847FF00 // Stop the jukebox (Func disabled)
+#define FUNC_STOP     0xB847FF00 // Stop the jukebox
 #define VOL_UP        0xB946FF00 // Volume up
 #define FAST_BACK     0xBB44FF00 // Rewind
 #define PAUSE_RESUME  0xBF40FF00 // Pause/Resume
