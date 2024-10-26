@@ -8,6 +8,7 @@ Each of the songs are loaded onto a microSD card and are controlled using the DF
 - IR Remote
 - DFPlayer Mini MP3 Player
 - 8 ohm micro speaker
+- MicroSD Card
 
 ## Songs Used
 These songs are stored locally on a microSD card to be used with the DFPlayer Mini module.
