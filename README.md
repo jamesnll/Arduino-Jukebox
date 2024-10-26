@@ -17,3 +17,9 @@ These songs are stored locally on a microSD card to be used with the DFPlayer Mi
 003 - Funkytown - Lipps Inc. <br>
 004 - Boogie Wonderland - Earth, Wind & Fire and The Emotions <br>
 005 - Never Gonna Give You Up - Rick Astley <br>
+
+## Archive Folder
+
+This folder contains old files that aren't being used by the project but I felt the need to leave them for display of my initial thoughts to play music on this project.
+
+- songs - Uses a passive buzzer to play tones at a set frequency for a set duration to mimic the chorus of a song.
