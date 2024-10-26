@@ -59,7 +59,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
       control_volume(VOL_UP, myDFPlayer);
       break;
     case FAST_BACK:
-      Serial.println("FAST BACK");
+      fast_back_button(myDFPlayer, current_song);
       break;
     case PAUSE_RESUME: 
       pause_resume_button(); 
@@ -329,6 +329,31 @@ static void fast_forward_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song)
     if (new_song > 10)
     {
       new_song = 0;
+    }
+    myDFPlayer.play(new_song);
+
+    current_song = new_song;
+  }
+}
+
+/**
+ * Handles the fast forward button on the IR Remote.
+ * Skips to the previous song. 
+ *
+ * @param myDFPlayer the object of the MP3 player module.
+ * @param song the int of the current song being played.
+ */
+static void fast_back_button(DFRobotDFPlayerMini myDFPlayer)
+{
+  if (power_button_status)
+  {
+    uint32_t new_song;
+    Serial.println("Playing next song");
+    new_song = song - 1;
+
+    if (new_song < 0)
+    {
+      new_song = 10;
     }
     myDFPlayer.play(new_song);
 

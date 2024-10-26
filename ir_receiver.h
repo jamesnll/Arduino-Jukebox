@@ -67,4 +67,5 @@ static void repeat_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song);
 static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
 static void stop_button(DFRobotDFPlayerMini myDFPlayer);
 static void fast_forward_button(DFRobotDFPlayerMini myDFPlayer);
+static void fast_back_button(DFRobotDFPlayerMini myDFPlayer);
 #endif
