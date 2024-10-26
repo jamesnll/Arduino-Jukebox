@@ -1,9 +1,9 @@
 #include "ir_receiver.h"
 
-bool power_button_status = false;
+bool power_button_status = false; // off = false, on = true
 bool pause_status = false; // pause = false, resume = true
-uint32_t current_song;
 int volume = DEFAULT_VOLUME;
+uint32_t current_song; // Current song being played
 
 void IR_Receiver::begin() 
 {
@@ -79,37 +79,47 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
       Serial.println("EQUALIZER"); 
       break;
     case ST_REPT: 
-      repeat_button(current_song);
+      repeat_button(myDFPlayer, current_song);
       break;
     case ZERO: 
       song_button(ZERO, myDFPlayer);
+      current_song = 1;
       break;
     case ONE: 
       song_button(ONE, myDFPlayer);
+      current_song = 2;
       break;
     case TWO: 
       song_button(TWO, myDFPlayer);
+      current_song = 3;
       break;
     case THREE: 
       song_button(THREE, myDFPlayer);
+      current_song = 4;
       break;
     case FOUR: 
       song_button(FOUR, myDFPlayer);
+      current_song = 5;
       break;
     case FIVE: 
       song_button(FIVE, myDFPlayer);
+      current_song = 6;
       break;
     case SIX: 
       song_button(SIX, myDFPlayer);
+      current_song = 7;
       break;
     case SEVEN: 
       song_button(SEVEN, myDFPlayer);
+      current_song = 8;
       break;
     case EIGHT: 
       song_button(EIGHT, myDFPlayer);
+      current_song = 9;
       break;
     case NINE: 
       song_button(NINE, myDFPlayer);
+      current_song = 10;
       break;
     default:
       Serial.println("Other button");
@@ -201,14 +211,22 @@ static void pause_resume_button()
  * If power_button_status is true, repeat the current song being played.
  * If power_button_status is false, return.
  *
- * @param current_song the hex address of the current song being played.
+ * The DFPlayer Mini's first file starts at 001 instead of 000. To keep the "correct" track of songs
+ * we subtract 1 when printing out which number track is being played. This way it stays aligned with
+ * the buttons on the IR remote.
+ *
+ * @param myDFPlayer the object of the MP3 player module
+ * @param song the int of the current song being played.
  */
-static void repeat_button(uint32_t song)
+static void repeat_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song)
 {
   if (power_button_status)
   {
-    Serial.println("Repeating song");
-    Serial.println(song);
+
+    Serial.print("Repeating song: ");
+    Serial.println(song - 1);
+
+    myDFPlayer.play(song);
   }
 }
 
@@ -266,6 +284,4 @@ static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
     }
   }
   
-  // Update the current song
-  current_song = button;
 }

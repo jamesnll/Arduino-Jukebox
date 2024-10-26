@@ -63,6 +63,6 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
 static void power_button(DFRobotDFPlayerMini myDFPlayer);
 static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
 static void pause_resume_button();
-static void repeat_button(uint32_t song);
+static void repeat_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song);
 static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer);
 #endif
