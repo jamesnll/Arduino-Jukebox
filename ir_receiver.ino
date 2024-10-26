@@ -42,7 +42,8 @@ void IR_Receiver::translate_ir(DFRobotDFPlayerMini myDFPlayer)
 /**
  * Handles the raw IR data and maps it to the corresponding hex address.
  *
- * @param decodedRawData the decoded raw IR data
+ * @param decodedRawData the decoded raw IR data.
+ * @param myDFPlayer the object of the MP3 player module.
  */
 static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini myDFPlayer)
 {
@@ -52,7 +53,7 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
       power_button(myDFPlayer);
       break;
     case FUNC_STOP: 
-      Serial.println("FUNC/STOP");
+      stop_button(myDFPlayer);
       break;
     case VOL_UP: 
       control_volume(VOL_UP, myDFPlayer);
@@ -131,6 +132,8 @@ static void handle_ir_codes(IRRawDataType decodedRawData, DFRobotDFPlayerMini my
  * Handles the functionality of the power button.
  * If power_button_status is true, enable functionality for all other buttons on the remote.
  * If power_button_status is false, disable functionality for all other buttons.
+ *
+ * @param myDFPlayer the object of the MP3 player module.
  */
 static void power_button(DFRobotDFPlayerMini myDFPlayer)
 {
@@ -153,6 +156,7 @@ static void power_button(DFRobotDFPlayerMini myDFPlayer)
  * If power_button_status is false, return.
  *
  * @param button Hex address for volume up/down.
+ * @param myDFPlayer the object of the MP3 player module.
  */
 static void control_volume(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
 {
@@ -215,7 +219,7 @@ static void pause_resume_button()
  * we subtract 1 when printing out which number track is being played. This way it stays aligned with
  * the buttons on the IR remote.
  *
- * @param myDFPlayer the object of the MP3 player module
+ * @param myDFPlayer the object of the MP3 player module.
  * @param song the int of the current song being played.
  */
 static void repeat_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song)
@@ -236,6 +240,7 @@ static void repeat_button(DFRobotDFPlayerMini myDFPlayer, uint32_t song)
  * If power_button_status is false, return.
  *
  * @param button Hex address representing which song to play.
+ * @param myDFPlayer the object of the MP3 player module.
  */
 static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
 {
@@ -266,22 +271,42 @@ static void song_button(uint32_t button, DFRobotDFPlayerMini myDFPlayer)
         break;      
       case FIVE:
         Serial.println("Playing song 5");
+        myDFPlayer.play(6);
         break;      
       case SIX:
         Serial.println("Playing song 6");
+        myDFPlayer.play(7);
         break;      
       case SEVEN:
         Serial.println("Playing song 7");
+        myDFPlayer.play(8);
         break;      
       case EIGHT:
         Serial.println("Playing song 8");
+        myDFPlayer.play(9);
         break;      
       case NINE:
         Serial.println("Playing song 9");
+        myDFPlayer.play(10);
         break;      
       default:
         break;
     }
   }
-  
+
+}
+
+/**
+ * Handles the FUNC/STOP button on the IR Remote.
+ * Stops the DFPlayer Mini Module from playing the current song.
+ *
+ * @param myDFPlayer the object of the MP3 player module.
+ */
+static void stop_button(DFRobotDFPlayerMini myDFPlayer)
+{
+  if (power_button_status)
+  {
+    Serial.println("Stopping song");
+    myDFPlayer.stop();
+  }
 }
