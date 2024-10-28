@@ -2,13 +2,17 @@
 This project uses the Arduino Uno Rev3 board and a number of different modules listed below to play nine songs that the user can choose from by controlling an IR remote.
 Each of the songs are loaded onto a microSD card and are controlled using the DFPlayer Mini MP3 Player module, which is connected to an 8 ohm micro speaker.
 
-## Modules Used
+## Components Used
 - Arduino Uno
 - IR Receiver
 - IR Remote
 - DFPlayer Mini MP3 Player
 - 8 ohm micro speaker
 - MicroSD Card
+- Breadboard Jumper Wires
+- Female-to-Male Dupont Wires
+- 1K Ohm Resistor
+- USB Cable
 
 ## Songs Used
 These songs are stored locally on a microSD card to be used with the DFPlayer Mini module.
