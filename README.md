@@ -17,11 +17,18 @@ Each of the songs are loaded onto a microSD card and are controlled using the DF
 ## Songs Used
 These songs are stored locally on a microSD card to be used with the DFPlayer Mini module.
 
+Format: ID - Song Name - Artist
+
 001 - Better Off Alone - Alice Deejay <br>
 002 - Walking on a Dream - Empire of the Sun <br>
 003 - Funkytown - Lipps Inc. <br>
 004 - Boogie Wonderland - Earth, Wind & Fire and The Emotions <br>
 005 - Never Gonna Give You Up - Rick Astley <br>
+006 - Mr. Blue Sky - Electric Light Orchestra <br>
+007 - Superstition - Stevie Wonder <br>
+008 - Blame It on the Boogie - The Jacksons <br>
+009 - Rock with You - Michael Jackson <br>
+010 - Ain't No Mountain High Enough - Marvin Gaye, Tammi Terrell <br>
 
 ## Archive Folder
 
